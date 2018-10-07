@@ -1,0 +1,18 @@
+/* mainbody */
+.mainbody {
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.mainbody .button {
+  width: 180px;
+  height: 30px;
+  background: #6461a0;
+  border: white 3px solid;
+  border-radius: 10px;
+  color: white;
+}
