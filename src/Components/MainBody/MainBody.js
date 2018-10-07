@@ -13,6 +13,7 @@ class MainBody extends Component {
       dadjokes: [],
       favoriteJokes: []
     };
+
     this.addFavorite = this.addFavorite.bind(this);
     this.deleteFavorite = this.deleteFavorite.bind(this);
   }
@@ -38,9 +39,11 @@ class MainBody extends Component {
 
   // POST:
   addFavorite() {
-    axios
-      .post("/api/dadjokes/favorites", { dadjokes: this.state.dadjokes })
-      .then(response => this.setState({ favoriteJokes: response.data }));
+    if (!this.state.favoriteJokes.includes(this.state.dadjokes)) {
+      axios
+        .post("/api/dadjokes/favorites", { dadjokes: this.state.dadjokes })
+        .then(response => this.setState({ favoriteJokes: response.data }));
+    }
   }
 
   // DELETE

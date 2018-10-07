@@ -12,10 +12,29 @@
   font-weight: normal;
 }
 
-.favebutton {
+input {
+  width: 60%;
+}
+
+.editbutton {
+  width: 60px;
+  height: 20px;
+  background: #9191e9;
+  border: white 2px solid;
+  border-radius: 5px;
+}
+.submitbutton {
+  width: 150px;
+  height: 20px;
+  background: #6461a0;
+  border: white 2px solid;
+  border-radius: 5px;
+  color: white;
+}
+.deletebutton {
   width: 30px;
   height: 20px;
   background: #9191e9;
-  border: white 3px solid;
+  border: white 2px solid;
   border-radius: 5px;
 }

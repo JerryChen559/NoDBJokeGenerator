@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "./Components/Header";
 import MainBody from "./Components/MainBody/MainBody";
 import Footer from "./Components/Footer";
-import BonusJokes from "./Components/BonusJokes";
+import BonusJokes from "./Components/BonusJokes/BonusJokes";
 import "./App.css";
 
 class App extends Component {
@@ -12,7 +12,9 @@ class App extends Component {
         <Header />
         <MainBody />
         <Footer />
+        <br />
         <BonusJokes />
+        <br />
       </div>
     );
   }

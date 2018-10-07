@@ -32,6 +32,13 @@ class FavoriteJokesList extends Component {
     });
   }
 
+  // submitEditedJoke(something, something) {
+  //   this.setState({
+  //     this.state of joke being edited: value of string in the input array,
+  //     editMode: !this.state.editMode
+  //   });
+  // }
+
   render() {
     console.log(this.state);
     let list = this.props.favoriteJokes.map((el, ind) => {
@@ -40,21 +47,31 @@ class FavoriteJokesList extends Component {
           {/* {console.log(this.props.favoriteJokes)} */}
 
           {this.state.editMode ? (
-            <input
-              placeholder="copy of current joke"
-              value={this.state.jokeToEdit}
-              onChange={e => this.handleJoke(e.target.value)}
-            />
+            <div>
+              <input
+                size="520px"
+                placeholder="copy of current joke"
+                value={this.state.jokeToEdit}
+                onChange={e => this.handleJoke(e.target.value)}
+              />
+
+              <button className="submitbutton" onClick={this.submitEditedJoke}>
+                sumbit updated Joke
+              </button>
+            </div>
           ) : (
             <div>{el}</div>
           )}
           <button
-            className="confirmChange"
+            className="editbutton"
             onClick={() => this.updateJokeHander(ind, el)}
           >
             {this.state.editMode ? "Cancel" : "Edit"}
           </button>
-          <button className="favebutton" onClick={() => this.props.delete(ind)}>
+          <button
+            className="deletebutton"
+            onClick={() => this.props.delete(ind)}
+          >
             X
           </button>
         </div>

@@ -1,0 +1,17 @@
+.bonusJokes {
+  margin: auto;
+  width: 86vw;
+  height: 120px;
+  background: #6461a0;
+  border: #b68cb8 3px solid;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.bonustext {
+  font-weight: normal;
+}
