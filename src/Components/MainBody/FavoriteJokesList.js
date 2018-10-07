@@ -11,6 +11,8 @@ class FavoriteJokesList extends Component {
       jokeToEdit: "",
       editMode: false
     };
+
+    this.submitEditedJoke = this.submitEditedJoke.bind(this);
   }
 
   componentDidMount() {
@@ -32,12 +34,15 @@ class FavoriteJokesList extends Component {
     });
   }
 
-  // submitEditedJoke(something, something) {
-  //   this.setState({
-  //     this.state of joke being edited: value of string in the input array,
-  //     editMode: !this.state.editMode
-  //   });
-  // }
+  submitEditedJoke() {
+    this.setState({
+      // this.state of joke being edited: value of string in the input array,
+      // having trouble getting this.state.jokeToEdit save on the render.
+      // index problem and update problem may be fixed when I set up PUT on axios to the back end.
+      jokeToEdit: this.state.jokeToEdit,
+      editMode: !this.state.editMode
+    });
+  }
 
   render() {
     console.log(this.state);
@@ -48,15 +53,15 @@ class FavoriteJokesList extends Component {
 
           {this.state.editMode ? (
             <div>
+              {/* need to fix input field to only edit the selected edit.
+              need to send logic to the back end with PUT */}
               <input
-                size="520px"
                 placeholder="copy of current joke"
                 value={this.state.jokeToEdit}
                 onChange={e => this.handleJoke(e.target.value)}
               />
-
               <button className="submitbutton" onClick={this.submitEditedJoke}>
-                sumbit updated Joke
+                submit updated Joke
               </button>
             </div>
           ) : (
