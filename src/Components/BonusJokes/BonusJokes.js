@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import MomJokes from "./MomJokes";
 import ChuckJokes from "./ChuckJokes";
+import DadJokes from "../../Components/MainBody/DadJokes";
 import "./BonusJokes.css";
 
 class BonusJokes extends Component {
@@ -10,7 +11,8 @@ class BonusJokes extends Component {
 
     this.state = {
       momjokes: [],
-      chuckjokes: []
+      chuckjokes: [],
+      dadjokes: []
     };
   }
 
@@ -22,6 +24,10 @@ class BonusJokes extends Component {
     axios.get("/api/chuckjokes").then(response => {
       console.log(response.data);
       this.setState({ chuckjokes: response.data });
+    });
+    axios.get("/api/dadjokes").then(response => {
+      console.log(response.data);
+      this.setState({ dadjokes: response.data });
     });
   }
 
@@ -38,6 +44,10 @@ class BonusJokes extends Component {
         <div>Bonus Chuck Norris joke: </div>
         <div className="bonustext">
           <ChuckJokes chuckjokes={this.state.chuckjokes} />
+        </div>
+        <div>One extra dad joke: </div>
+        <div className="bonustext">
+          <DadJokes dadJokes={this.state.dadjokes} />
         </div>
       </div>
     );

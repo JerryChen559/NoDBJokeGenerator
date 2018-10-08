@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import DadJokes from "./DadJokes";
+import DadJokes from "./DadJokes";
 import FavoriteButton from "./FavoriteButton";
 import FavoriteJokesList from "./FavoriteJokesList";
 import "./MainBody.css";
@@ -16,6 +16,7 @@ class MainBody extends Component {
 
     this.addFavorite = this.addFavorite.bind(this);
     this.deleteFavorite = this.deleteFavorite.bind(this);
+    // this.submitEditedJoke = this.submitEditedJoke.bind(this);
   }
 
   componentDidMount() {
@@ -46,6 +47,14 @@ class MainBody extends Component {
     }
   }
 
+  // PUT:
+  // submitEditedJoke(joke) {
+  //   axios.put(`/api/dadjokes/favorites/`, { joke }).then(response => {
+  //     console.log(response.data);
+  //     this.setState({ favoriteJokes: response.data });
+  //   });
+  // }
+
   // DELETE
   deleteFavorite(id) {
     axios
@@ -61,13 +70,13 @@ class MainBody extends Component {
           New Dad Joke!
         </button>
         <h4>{this.state.dadjokes}</h4>
-        {/* put this result in dad list dad component.
-         <DadJokes dadjokes={this.state.dadjokes} /> */}
+        <DadJokes dadjokes={this.state.dadjokes} />
         <FavoriteButton add={this.addFavorite} />
         <div>
           <FavoriteJokesList
             favoriteJokes={this.state.favoriteJokes}
             delete={this.deleteFavorite}
+            // submit={this.submitEditedJoke}
           />
         </div>
       </div>

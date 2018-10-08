@@ -12,7 +12,8 @@ class FavoriteJokesList extends Component {
       editMode: false
     };
 
-    this.submitEditedJoke = this.submitEditedJoke.bind(this);
+    // this.submitEditedJoke = this.submitEditedJoke.bind(this);
+    this.updateJokeHandler = this.updateJokeHandler.bind(this);
   }
 
   componentDidMount() {
@@ -27,26 +28,26 @@ class FavoriteJokesList extends Component {
     this.setState({ jokeToEdit: val });
   }
 
-  updateJokeHander(ind, el) {
+  // user can edit and cancel edit
+  updateJokeHandler(ind, el) {
     this.setState({
       jokeToEdit: el,
       editMode: !this.state.editMode
     });
   }
 
-  submitEditedJoke() {
-    this.setState({
-      // this.state of joke being edited: value of string in the input array,
-      // having trouble getting this.state.jokeToEdit save on the render.
-      // index problem and update problem may be fixed when I set up PUT on axios to the back end.
-      jokeToEdit: this.state.jokeToEdit,
-      editMode: !this.state.editMode
-    });
-  }
+  // submitEditedJoke(id) {
+  //   this.props.submit(this.state.jokeToEdit, id);
+  //   this.setState({
+  //     jokeToEdit: this.state.jokeToEdit.joke,
+  //     editMode: !this.state.editMode
+  //   });
+  // }
 
   render() {
     console.log(this.state);
     let list = this.props.favoriteJokes.map((el, ind) => {
+      console.log(el.id);
       return (
         <div key={ind}>
           {/* {console.log(this.props.favoriteJokes)} */}
@@ -55,21 +56,31 @@ class FavoriteJokesList extends Component {
             <div>
               {/* need to fix input field to only edit the selected edit.
               need to send logic to the back end with PUT */}
+              {/* I think I need to assign an id for each joke before I'm able to make the PUT call.  */}
               <input
                 placeholder="copy of current joke"
                 value={this.state.jokeToEdit}
                 onChange={e => this.handleJoke(e.target.value)}
               />
-              <button className="submitbutton" onClick={this.submitEditedJoke}>
-                submit updated Joke
-              </button>
+              <span
+                className="submitbutton"
+                // onClick={() => this.submitEditedJoke(el.id)}
+              >
+                {" "}
+                <img
+                  className="urkel"
+                  src="https://cdn.dribbble.com/users/877428/screenshots/3691927/steve_1x.jpg"
+                  alt="steve urkel pic"
+                />
+                Sike, no edits allowed!
+              </span>
             </div>
           ) : (
             <div>{el}</div>
           )}
           <button
             className="editbutton"
-            onClick={() => this.updateJokeHander(ind, el)}
+            onClick={() => this.updateJokeHandler(ind, el)}
           >
             {this.state.editMode ? "Cancel" : "Edit"}
           </button>

@@ -15,4 +15,15 @@
   border: white 3px solid;
   border-radius: 10px;
   color: white;
+  transition: 0.25;
+}
+
+.mainbody .button:hover {
+  width: 180px;
+  height: 30px;
+  background: #9191e9;
+  border: white 3px solid;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
 }

@@ -7,6 +7,7 @@ const port = 4000;
 const dc = require("./controllers/dadCtrl");
 const mc = require("./Controllers/momCtrl");
 const cc = require("./Controllers/chuckCtrl");
+const fc = require("./Controllers/footerCtrl");
 
 const app = express();
 app.use(json());
@@ -27,8 +28,11 @@ app.get("/api/dadjokes", dc.getJoke);
 
 app.get("/api/dadjokes/favorites", dc.getFavoriteJokesList);
 app.post("/api/dadjokes/favorites", dc.addFavoriteJoke);
-// app.put("/api/dadjokes/:id", dc.updateFavoriteJoke);
+// app.put("/api/dadjokes/favorites/:id", dc.updateFavoriteJoke);
 app.delete("/api/dadjokes/:deleteIndex", dc.deleteFavoriteJoke);
+
+// Put to change footer words
+app.put("/api/footer/", fc.updateFooter);
 
 // BonusJokes under footer
 app.get("/api/momjokes", mc.getJokes);
